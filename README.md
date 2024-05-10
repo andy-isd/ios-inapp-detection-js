@@ -1,5 +1,13 @@
 # ios-inapp-detection-js
-This script detects if your webpage was opened in Safari or In-App utilizing window.innerHeight property.
+This script detects if your webpage was opened in iOS Safari or In-App utilizing screen.height and window.innerHeight properties.
+
+# The problem
+There's no method to detect whether your webpage is opened in Safari or in iOS internal browser (In-App aka WebView).
+
+# The solution
+Implement detection algorithm based on checking window.innerHeight property, that actually represents
+    the vertical height in pixels available to you webapp. This height is slightly greater for In-App compared to Safari (approx. 6 to 9 px).
+    It also depends on device height, i.e. — on iPhone model. Knowing the height of all models we can solve the task. 
 
 # Demo and full description
 - https://andy.isd-group.com/inapp.php
