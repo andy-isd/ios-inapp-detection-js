@@ -3,6 +3,8 @@ This script detects if your webpage was opened in iOS Safari or In-App utilizing
 
 # The problem
 There's no method to detect whether your webpage is opened in Safari or in iOS internal browser (In-App aka WebView).
+Ofcourse, you can detect Instagram or Facebook WebViews because they clearly change userAgent string. But, for example, Telegram
+or Slack doesn't.
 
 # The solution
 Implement detection algorithm based on checking window.innerHeight property, that actually represents
