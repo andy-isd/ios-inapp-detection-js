@@ -1,10 +1,3 @@
-# ios-inapp-detection-js
-This script detects if your webpage was opens in Safari or In-App utilizing window.innerHeight property.
-
-# Demo and full description
-- https://andy.isd-group.com/inapp.php
-
-```
 function detect_inapp() {
     const inapp_data = {"932":[746],"852":[666],"926":[752],"844":[670],"812":[635,641],"667":[559],"896":[725,721],"736":[628],"568":[460]};
     const is_ios_supported = !!navigator.userAgent.match(/iPhone OS 15_|iPhone OS 16_|iPhone OS 17_/i);
@@ -18,4 +11,3 @@ function detect_inapp() {
     }
     return null;
 }
-```
