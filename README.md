@@ -1,5 +1,5 @@
 # ios-inapp-detection-js
-This script detects if your webpage was opens in Safari or In-App utilizing window.innerHeight property.
+This script detects if your webpage was opened in Safari or In-App utilizing window.innerHeight property.
 
 # Demo and full description
 - https://andy.isd-group.com/inapp.php
