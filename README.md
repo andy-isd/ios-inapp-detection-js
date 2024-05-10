@@ -9,7 +9,7 @@ or Slack doesn't.
 # The solution
 Implement detection algorithm based on checking window.innerHeight property, that actually represents
     the vertical height in pixels available to you webapp. This height is slightly greater for In-App compared to Safari (approx. 6 to 9 px).
-    It also depends on device height, i.e. — on iPhone model. Knowing the height of all models we can solve the task. 
+    It also depends on device height, i.e. iPhone model. Knowing the heights of all models we can solve the task. 
 
 # Demo and full description
 - https://andy.isd-group.com/inapp.php
