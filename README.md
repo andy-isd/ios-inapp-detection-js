@@ -21,7 +21,7 @@ function detect_inapp() {
     const is_ios17 = !!navigator.userAgent.match(/iOS 17/i);
     const is_safari = !!navigator.userAgent.match(/Safari/i) && !!navigator.userAgent.match(/Mobile/i) && !!navigator.userAgent.match(/Version/i);
     const screen_h = screen.height;
-    const window_h = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+    const window_h = window.innerHeight;
     if(is_ios_supported && is_safari && inapp_data[screen_h].length) {
         if(screen_h == 812 && window_h == 635) return is_ios17; // ambiguity case
         return inapp_data[screen_h].indexOf(window_h) !== -1;
