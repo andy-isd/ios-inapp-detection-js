@@ -1,4 +1,5 @@
 function detect_inapp() {
+    if(window !== 'undefined' && (!!window.Telegram || !!window.TelegramWebviewProxy)) return true; // 2026 update: telegram in-app detection support
     const inapp_data = {"932":[746],"852":[666],"926":[752],"844":[670],"812":[635,641],"667":[559],"896":[725,721],"736":[628],"568":[460]};
     const is_ios_supported = !!navigator.userAgent.match(/iPhone OS 15_|iPhone OS 16_|iPhone OS 17_/i);
     const is_ios17 = !!navigator.userAgent.match(/iOS 17/i);
