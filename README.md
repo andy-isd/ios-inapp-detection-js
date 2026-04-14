@@ -15,16 +15,25 @@ Implement detection algorithm based on checking window.innerHeight property, tha
 - https://andy.isd-group.com/inapp.php
 
 ```
-function detect_inapp() {
-    const inapp_data = {"932":[746],"852":[666],"926":[752],"844":[670],"812":[635,641],"667":[559],"896":[725,721],"736":[628],"568":[460]};
-    const is_ios_supported = !!navigator.userAgent.match(/iPhone OS 15_|iPhone OS 16_|iPhone OS 17_/i);
-    const is_ios17 = !!navigator.userAgent.match(/iOS 17/i);
-    const is_safari = !!navigator.userAgent.match(/Safari/i) && !!navigator.userAgent.match(/Mobile/i) && !!navigator.userAgent.match(/Version/i);
-    const screen_h = screen.height;
-    const window_h = window.innerHeight;
-    if(is_ios_supported && is_safari && inapp_data[screen_h].length) {
-        if(screen_h == 812 && window_h == 635) return is_ios17; // ambiguity case
-        return inapp_data[screen_h].indexOf(window_h) !== -1;
+function iOSBrowser() {
+    let ua = navigator.userAgent;
+    if(!!ua.match(/iPhone|iPad/i)) {
+        if(typeof window !== 'undefined' && (!!window.Telegram || !!window.TelegramWebviewProxy)) return "In-App"; // 2026 update: telegram in-app detection support
+        if (ua.match(/chrome|chromium|crios/i)) return "Chrome";
+        else if (ua.match(/firefox|fxios/i)) return "Firefox";
+        else if (ua.match(/opera|opt/i)) return "Opera";
+        else if (ua.match(/edge|edgios/i)) return "Edge";
+        else if (ua.match(/brave/i)) return "Brave";
+        else if (ua.match(/instagram/i)) return "Instagram";
+        else if (ua.match(/barcelona/i)) return "Threads";
+        else if (ua.match(/facebook|fbios/i)) return "Facebook";
+        else if (ua.match(/linkedin/i)) return "LinkedIn";
+        else if (ua.match(/twitter/i)) return "X";
+        else if (ua.match(/musical/i)) return "TikTok";
+        else if (!ua.match(/version/i) && !ua.match(/mobile/i) && !ua.match(/safari/i) && ua.endsWith('(KHTML, like Gecko)')) return "Viber";
+        else if (ua.match(/safari/i) && ua.match(/version/i) && ua.match(/mobile/i) && (window.innerHeight / screen.height > 0.79)) return "Safari";
+        else
+            return "In-App";
     }
     return null;
 }
