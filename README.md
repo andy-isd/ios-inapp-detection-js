@@ -23,7 +23,7 @@ Instead of maintaining a growing list of apps and exceptions, the logic now redu
 1. Safari (installable) → show A2HS instructions
 2. Non-Safari / WebView (not installable) → prompt user to open in Safari
 
-A detailed breakdown of the current detection strategy — including the exact heuristics and edge-case handling — is provided in Appendix 1.
+A detailed breakdown of the current detection strategy — including the exact heuristics and edge-case handling — is provided below.
 
 | App           | Type    | Component              | UA Signature | Height | Height/852 |
 | ------------- | ------- | ---------------------- | ------------ | ------ | ---------- |
