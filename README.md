@@ -71,6 +71,12 @@ function iOSBrowser() {
 }
 ```
 
+## Limitations
+
+This is heuristic-based detection.
+
+There is no official API on iOS for detecting in-app browsers.
+
 ## Appendix: Browsers & In-App screen heights for iPhone 15 Pro (screen.height = 852)
 
 A detailed breakdown of the current detection strategy.
