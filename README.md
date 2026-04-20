@@ -51,6 +51,7 @@ A detailed breakdown of the current detection strategy — including the exact h
 # Demo and full description
 - https://andy.isd-group.com/inapp.php
 
+# Detection JavaScript code
 ```
 function iOSBrowser() {
     let ua = navigator.userAgent;
