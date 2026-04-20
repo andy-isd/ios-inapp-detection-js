@@ -91,7 +91,8 @@ Edge cases handled:
 - Telegram mimics Safari UA
 - Viber strips User-Agent
 - TikTok / Instagram inject custom UA
-- Some browsers expose A2HS via share sheet (marked with *)
+
+> Some browsers expose A2HS via share sheet (marked with *)
 
 | App           | Type    | Component              | UA Signature | Height | Height/852 |
 |---------------| ------- | ---------------------- | ------------ | ------ | ---------- |
