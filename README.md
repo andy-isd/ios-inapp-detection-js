@@ -1,54 +1,46 @@
-# iOS Safari vs In-App (WebView) Detection for Add to Home Screen
+# iOS In-App Browser Detection (for Add to Home Screen)
 
 ## Abstract
-This script detects if your webpage was opened in iOS Safari or In-App Browser utilizing user agent string and screen.height and window.innerHeight properties as reliable fallback. Esp. useful for PWA to decide when to show `Add to Home Screen` instructions.
 
-## 2026 script update
+On iOS, **"Add to Home Screen" only works reliably in Safari** (some third-party browsers expose it, but usage is minimal).
 
-The goal of this JavaScript is to detect is it safe to show the “Add to Home Screen” (A2HS) instruction (which is crucial for PWA).
+If your user opens the site from:
+- Telegram
+- Instagram
+- TikTok
 
-The detection logic combines multiple signals:
+→ "Add to Home Screen" simply does not work.
 
-- User-Agent signatures (when available)
-- Viewport behavior (to distinguish Safari from WebView environments)
-- Runtime signals (e.g. Telegram WebApp detection)
-- Known edge-cases (such as stripped or modified User-Agent strings)
+This repo helps you detect that.
 
-This allows the script to reliably answer a single question:
+## Goal of 2026 update
 
-Can this environment successfully install the app via Add to Home Screen?
+This is NOT about detecting apps. This is about answering one question:
 
-Instead of maintaining a growing list of apps and exceptions, the logic now reduces everything to two practical states:
+> Can we safely show "Add to Home Screen" instructions?
 
-1. Safari (installable) → show A2HS instructions
-2. Non-Safari / WebView (not installable) → prompt user to open in Safari
+The result is simple:
 
-A detailed breakdown of the current detection strategy — including the exact heuristics and edge-case handling — is provided below.
+- Safari → show install instructions
+- Everything else → ask user to open in Safari
 
-## Browsers & In-App screen heights for iPhone 15 Pro (screen.height = 852)
-
-| App           | Type    | Component              | UA Signature | Height | Height/852 |
-| ------------- | ------- | ---------------------- | ------------ | ------ | ---------- |
-| Safari        | Browser |                        | —            | 695    | 0.816      |
-| Brave         | Browser |                        | Brave/-      | 655    | 0.769      |
-| Chrome        | Browser |                        | CriOS        | 664    | 0.779      |
-| Firefox Focus | Browser |                        | FxiOS        | 659    | 0.773      |
-| Opera         | Browser | SFSafariViewController | OPT          | 663    | 0.778      |
-| Firefox       | Browser | SFSafariViewController | FxiOS        | 651    | 0.764      |
-| Edge          | Browser | SFSafariViewController | EdgiOS       | 655    | 0.769      |
-| ------------- | ------- | ---------------------- | ------------ | ------ | ---------- |
-| Slack         | In-App  | SFSafariViewController | —            | 657    | 0.771      |
-| Discord       | In-App  | SFSafariViewController | —            | 657    | 0.771      |
-| Reddit        | In-App  | SFSafariViewController | —            | 608    | 0.713      |
-| Telegram      | In-App  | WKWebView              | —            | 651    | 0.764      |
-| Viber         | In-App  | WKWebView              | +/—          | 720    | 0.845      |
-| X (Twitter)   | In-App  | WKWebView              | Twitter      | 720    | 0.845      |
-| Instagram     | In-App  | WKWebView              | Instagram    | 658    | 0.772      |
-| Threads       | In-App  | WKWebView              | Barcelona    | 627    | 0.736      |
-| Facebook      | In-App  | WKWebView              | FBIOS        | 673    | 0.790      |
-| Messenger     | In-App  | WKWebView              | FBIOS        | 655    | 0.769      |
-| LinkedIn      | In-App  | WKWebView              | LinkedInApp  | 662    | 0.777      |
-| TikTok        | In-App  | WKWebView              | musical_ly   | 715    | 0.839      |
+## Quick usage example
+```
+const browser = iOSBrowser();
+if(browser !== null) {
+    if(browser == "Safari") {
+        // show Add to Home Screen instructions
+        showInstallInstructions();
+    }
+    else {
+        // show Open in Safari instruction: additionally you can show different instructions according to `browser` value
+        showOpenInSafari();
+    }
+}
+else {
+    // do nothing or check for Android: we're not on iOS / iPadOS
+}
+```
 
 ## Demo and full description
 - https://andy.isd-group.com/inapp.php
@@ -79,18 +71,30 @@ function iOSBrowser() {
 }
 ```
 
-## How to use example
-```
-const browser = iOSBrowser();
-if(browser !== null) {
-    if(browser == "Safari") {
-        // show Add to Home Screen instructions
-    }
-    else {
-        // show Open in Safari instruction: additionally you can show different instructions according to `browser` value
-    }
-}
-else {
-    // do nothing: we're not on iOS / iPadOS
-}
-```
+## Appendix: Browsers & In-App screen heights for iPhone 15 Pro (screen.height = 852)
+
+A detailed breakdown of the current detection strategy — including the exact heuristics and edge-case handling.
+
+| App           | Type    | Component              | UA Signature | Height | Height/852 |
+| ------------- | ------- | ---------------------- | ------------ | ------ | ---------- |
+| Safari        | Browser |                        | —            | 695    | 0.816      |
+| Brave         | Browser |                        | Brave/-      | 655    | 0.769      |
+| Chrome        | Browser |                        | CriOS        | 664    | 0.779      |
+| Firefox Focus | Browser |                        | FxiOS        | 659    | 0.773      |
+| Opera         | Browser | SFSafariViewController | OPT          | 663    | 0.778      |
+| Firefox       | Browser | SFSafariViewController | FxiOS        | 651    | 0.764      |
+| Edge          | Browser | SFSafariViewController | EdgiOS       | 655    | 0.769      |
+| ------------- | ------- | ---------------------- | ------------ | ------ | ---------- |
+| Slack         | In-App  | SFSafariViewController | —            | 657    | 0.771      |
+| Discord       | In-App  | SFSafariViewController | —            | 657    | 0.771      |
+| Reddit        | In-App  | SFSafariViewController | —            | 608    | 0.713      |
+| Telegram      | In-App  | WKWebView              | —            | 651    | 0.764      |
+| Viber         | In-App  | WKWebView              | +/—          | 720    | 0.845      |
+| X (Twitter)   | In-App  | WKWebView              | Twitter      | 720    | 0.845      |
+| Instagram     | In-App  | WKWebView              | Instagram    | 658    | 0.772      |
+| Threads       | In-App  | WKWebView              | Barcelona    | 627    | 0.736      |
+| Facebook      | In-App  | WKWebView              | FBIOS        | 673    | 0.790      |
+| Messenger     | In-App  | WKWebView              | FBIOS        | 655    | 0.769      |
+| LinkedIn      | In-App  | WKWebView              | LinkedInApp  | 662    | 0.777      |
+| TikTok        | In-App  | WKWebView              | musical_ly   | 715    | 0.839      |
+
