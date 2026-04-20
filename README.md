@@ -73,16 +73,22 @@ function iOSBrowser() {
 
 ## Appendix: Browsers & In-App screen heights for iPhone 15 Pro (screen.height = 852)
 
-A detailed breakdown of the current detection strategy — including the exact heuristics and edge-case handling.
+A detailed breakdown of the current detection strategy.
+
+Edge cases handled:
+- Telegram mimics Safari UA
+- Viber strips User-Agent
+- TikTok / Instagram inject custom UA
+- Some browsers expose A2HS via share sheet (marked with *)
 
 | App           | Type    | Component              | UA Signature | Height | Height/852 |
-| ------------- | ------- | ---------------------- | ------------ | ------ | ---------- |
+|---------------| ------- | ---------------------- | ------------ | ------ | ---------- |
 | Safari        | Browser |                        | —            | 695    | 0.816      |
 | Brave         | Browser |                        | Brave/-      | 655    | 0.769      |
-| Chrome        | Browser |                        | CriOS        | 664    | 0.779      |
+| Chrome*       | Browser |                        | CriOS        | 664    | 0.779      |
 | Firefox Focus | Browser |                        | FxiOS        | 659    | 0.773      |
-| Opera         | Browser | SFSafariViewController | OPT          | 663    | 0.778      |
-| Firefox       | Browser | SFSafariViewController | FxiOS        | 651    | 0.764      |
+| Opera*        | Browser | SFSafariViewController | OPT          | 663    | 0.778      |
+| Firefox*      | Browser | SFSafariViewController | FxiOS        | 651    | 0.764      |
 | Edge          | Browser | SFSafariViewController | EdgiOS       | 655    | 0.769      |
 | ------------- | ------- | ---------------------- | ------------ | ------ | ---------- |
 | Slack         | In-App  | SFSafariViewController | —            | 657    | 0.771      |
