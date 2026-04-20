@@ -81,6 +81,12 @@ There is no official API on iOS for detecting in-app browsers.
 
 A detailed breakdown of the current detection strategy.
 
+It combines:
+- UA signatures
+- viewport heuristics (innerHeight)
+- runtime detection (Telegram)
+- edge-case handling (Viber, etc)
+
 Edge cases handled:
 - Telegram mimics Safari UA
 - Viber strips User-Agent
