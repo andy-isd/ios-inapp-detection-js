@@ -25,6 +25,8 @@ Instead of maintaining a growing list of apps and exceptions, the logic now redu
 
 A detailed breakdown of the current detection strategy — including the exact heuristics and edge-case handling — is provided below.
 
+# Browsers & In-App screen heights for iPhone 15 Pro (screen.height = 852)
+
 | App           | Type    | Component              | UA Signature | Height | Height/852 |
 | ------------- | ------- | ---------------------- | ------------ | ------ | ---------- |
 | Safari        | Browser |                        | —            | 695    | 0.816      |
