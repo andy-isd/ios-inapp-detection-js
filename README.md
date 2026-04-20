@@ -76,7 +76,7 @@ function iOSBrowser() {
 }
 ```
 
-# How to use
+# How to use example
 ```
 const browser = iOSBrowser();
 if(browser !== null) {
@@ -88,6 +88,6 @@ if(browser !== null) {
     }
 }
 else {
-    // do nothing: we're not on iOS / iPadOs
+    // do nothing: we're not on iOS / iPadOS
 }
 ```
