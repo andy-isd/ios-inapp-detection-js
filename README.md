@@ -5,7 +5,7 @@ This script detects if your webpage was opened in iOS Safari or In-App Browser u
 
 # 2026 script update
 
-The goal of this JavaScript is not to detect is it safe to show the “Add to Home Screen” (A2HS) instruction (which is crucial for PWA).
+The goal of this JavaScript is to detect is it safe to show the “Add to Home Screen” (A2HS) instruction (which is crucial for PWA).
 
 The detection logic combines multiple signals:
 
