@@ -75,3 +75,19 @@ function iOSBrowser() {
     return null;
 }
 ```
+
+# How to use
+```
+const browser = iOSBrowser();
+if(browser !== null) {
+    if(browser == "Safari") {
+        // show Add to Home Screen instructions
+    }
+    else {
+        // show Open in Safari instruction: additionally you can show different instructions according to `browser` value
+    }
+}
+else {
+    // do nothing: we're not on iOS / iPadOs
+}
+```
