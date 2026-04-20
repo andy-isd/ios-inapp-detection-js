@@ -1,5 +1,5 @@
 /*
-    Real iOS browser/In-App detector
+    iOS Safari vs In-App detector
     (C) Copyright Andrew Sergeyev
     https://andy.isd-group.com/
     v2026 version (iOS 26 support)
