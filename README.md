@@ -1,9 +1,9 @@
-# ios-inapp-detection-js
+# iOS Safari vs In-App (WebView) Detection for Add to Home Screen
 
-# Abstract
+## Abstract
 This script detects if your webpage was opened in iOS Safari or In-App Browser utilizing user agent string and screen.height and window.innerHeight properties as reliable fallback. Esp. useful for PWA to decide when to show `Add to Home Screen` instructions.
 
-# 2026 script update
+## 2026 script update
 
 The goal of this JavaScript is to detect is it safe to show the “Add to Home Screen” (A2HS) instruction (which is crucial for PWA).
 
@@ -25,7 +25,7 @@ Instead of maintaining a growing list of apps and exceptions, the logic now redu
 
 A detailed breakdown of the current detection strategy — including the exact heuristics and edge-case handling — is provided below.
 
-# Browsers & In-App screen heights for iPhone 15 Pro (screen.height = 852)
+## Browsers & In-App screen heights for iPhone 15 Pro (screen.height = 852)
 
 | App           | Type    | Component              | UA Signature | Height | Height/852 |
 | ------------- | ------- | ---------------------- | ------------ | ------ | ---------- |
@@ -50,10 +50,10 @@ A detailed breakdown of the current detection strategy — including the exact h
 | LinkedIn      | In-App  | WKWebView              | LinkedInApp  | 662    | 0.777      |
 | TikTok        | In-App  | WKWebView              | musical_ly   | 715    | 0.839      |
 
-# Demo and full description
+## Demo and full description
 - https://andy.isd-group.com/inapp.php
 
-# Detection JavaScript code
+## Detection JavaScript code
 ```
 function iOSBrowser() {
     let ua = navigator.userAgent;
@@ -79,7 +79,7 @@ function iOSBrowser() {
 }
 ```
 
-# How to use example
+## How to use example
 ```
 const browser = iOSBrowser();
 if(browser !== null) {
